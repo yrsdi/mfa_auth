@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Welcome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f5f5f7;
+      min-height: 100vh;
+    }
+    .offcanvas-backdrop.show {
+      opacity: 0.3;
+    }
+    .sidebar-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .welcome-section {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Offcanvas Sidebar -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="sidebarMenuLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-flex align-items-center mb-4">
+        <img src="https://ui-avatars.com/api/?name=User" alt="User" class="sidebar-avatar me-2" id="sidebarAvatar">
+        <div>
+          <div id="sidebarUsername" class="fw-bold">Username</div>
+          <small id="sidebarExp" class="text-muted">Exp: -</small>
+        </div>
+      </div>
+      <ul class="nav flex-column mb-3">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" id="menuDashboard"><i class="bi bi-house"></i> Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="menuProfile"><i class="bi bi-person"></i> Profile</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-danger w-100" id="btnLogout">Logout</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <nav class="navbar navbar-light bg-white border-bottom">
+    <div class="container-fluid">
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <span class="navbar-brand ms-2" id="dashboardTitle">Dashboard</span>
+      <span class="badge bg-secondary" id="sessionTimer"></span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div id="welcomeSection" class="welcome-section text-center">
+      <h2 class="mb-3">Selamat Datang, <span id="welcomeUser"></span>!</h2>
+      <p class="lead">Anda telah berhasil login dengan Multi-Factor Authentication (MFA).</p>
+      <div class="alert alert-info d-inline-block" id="jwtExpiryBox">
+        <strong>Session expires in:</strong> <span id="expiryCountdown">-</span>
+      </div>
+    </div>
+    <!-- Profile Section (optional, can be expanded) -->
+    <div id="profileSection" class="d-none">
+      <div class="card mx-auto" style="max-width:400px">
+        <div class="card-header">Profile</div>
+        <div class="card-body">
+          <p><strong>Username:</strong> <span id="profileUser"></span></p>
+          <p><strong>User ID:</strong> <span id="profileId"></span></p>
+          <p><strong>Session Expiry:</strong> <span id="profileExpiry"></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS + Bootstrap Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="dashboard.js"></script>
+</body>
+</html>
